@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<title>NoSQL AAT</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+
+		<style>
+			.newspaper {
+				-webkit-column-count: 3; /* Chrome, Safari, Opera */
+				-moz-column-count: 3; /* Firefox */
+				column-count: 3;
+			}
+			.avoid-split {
+				-webkit-column-break-inside: avoid;
+				-moz-column-break-inside: avoid;
+				break-inside: avoid;
+				padding: 1em;
+			}
+			.title {
+				text-align: center;
+			}
+			body {
+				margin: 1%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title">
+			<h1>CRUD Application on Heart Dataset</h1>
+			<h2>using MongoDB</h2>
+		</div>
+		<br />
+		<div class="newspaper">
+			<form method="POST" class="avoid-split">
+				{{ cform.hidden_tag() }}
+				<fieldset>
+					<legend>Create</legend>
+					{{ cform.age.label }}<br />
+					{{ cform.age }}<br />
+					{{ cform.sex.label }}<br />
+					{{ cform.sex }}<br />
+					{{ cform.chestPain.label }}<br />
+					{{ cform.chestPain }}<br />
+					{{ cform.restingBP.label }}<br />
+					{{ cform.restingBP }}<br />
+					{{ cform.cholesterol.label }}<br />
+					{{ cform.cholesterol }}<br />
+					{{ cform.maxHeartRate.label }}<br />
+					{{ cform.maxHeartRate }}<br />
+					{{ cform.restingECG.label }}<br />
+					{{ cform.restingECG }}<br />
+					{{ cform.exerciseAngina.label }}<br />
+					{{ cform.exerciseAngina }}<br />
+					{{ cform.heartDisease.label }}<br />
+					{{ cform.heartDisease }}<br />
+					{{ cform.create }}
+				</fieldset>
+			</form>
+			<form method="POST" class="avoid-split">
+				{{ uform.hidden_tag() }}
+				<fieldset>
+					<legend>Update</legend>
+					{{ uform.key.label }}<br />
+					{{ uform.key }}<br /><br />
+					{{ uform.age.label }}<br />
+					{{ uform.age }}<br />
+					{{ uform.sex.label }}<br />
+					{{ uform.sex }}<br />
+					{{ uform.chestPain.label }}<br />
+					{{ uform.chestPain }}<br />
+					{{ uform.restingBP.label }}<br />
+					{{ uform.restingBP }}<br />
+					{{ uform.cholesterol.label }}<br />
+					{{ uform.cholesterol }}<br />
+					{{ uform.maxHeartRate.label }}<br />
+					{{ uform.maxHeartRate }}<br />
+					{{ uform.restingECG.label }}<br />
+					{{ uform.restingECG }}<br />
+					{{ uform.exerciseAngina.label }}<br />
+					{{ uform.exerciseAngina }}<br />
+					{{ uform.heartDisease.label }}<br />
+					{{ uform.heartDisease }}<br />
+					{{ uform.update }}
+				</fieldset>
+			</form>
+			<form method="POST" class="avoid-split">
+				{{ dform.hidden_tag() }}
+				<fieldset>
+					<legend>Delete</legend>
+					{{ dform.key.label }}<br />
+					{{ dform.key }}<br /><br />
+					{{ dform.delete }}
+				</fieldset>
+			</form>
+		</div>
+		<br />
+
+		<b>Data:</b>
+		<table id="data" class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Age</th>
+					<th>Sex</th>
+					<th>ChestPainType</th>
+					<th>RestingBP</th>
+					<th>Cholesterol</th>
+					<th>RestingECG</th>
+					<th>MaxHR</th>
+					<th>ExerciseAngina</th>
+					<th>HeartDisease</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for d in data %}
+				<tr>
+					<td>{{ d["d_id"] }}</td>
+					<td>{{ d["Age"] }}</td>
+					<td>{{ d["Sex"] }}</td>
+					<td>{{ d["ChestPainType"] }}</td>
+					<td>{{ d["RestingBP"] }}</td>
+					<td>{{ d["Cholesterol"] }}</td>
+					<td>{{ d["RestingECG"] }}</td>
+					<td>{{ d["MaxHR"] }}</td>
+					<td>{{ d["ExerciseAngina"] }}</td>
+					<td>{{ d["HeartDisease"] }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<br />
+		<img
+			src="/plot.png"
+			alt="bar chart for no. of people with heart disease"
+		/>
+		<img src="/pie-plot.png" alt="pie chart for the types of chest pains" />
+		<br />
+	</body>
+</html>
